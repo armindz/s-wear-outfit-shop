@@ -1,0 +1,112 @@
+body,
+html {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(0deg, rgb(241, 241, 241) 0%, rgba(250, 250, 250, 1) 0%, rgb(241, 241, 241) 100%);
+    border-bottom: 1px rgb(241, 241, 241) outset;
+}
+
+.logoContainer {
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 50px;
+    border: 2px red solid;
+    text-align: center;
+}
+
+#navbarLogo img {
+    margin: 10px;
+    width: auto;
+    height: 30px;
+}
+
+.navbarLinks {
+    float: left;
+    position: relative;
+    width: 50%;
+    height: 50px;
+    border: 2px blue solid;
+}
+
+ul {
+    list-style-type: none;
+    margin: 15px 0px;
+    padding: 0;
+    text-align: right;
+}
+
+li {
+    display: inline;
+    margin: 0px 20px 0px 10px;
+}
+
+.navbarLinks li a {
+    text-decoration: none;
+    font-family: Lato;
+    font-weight: 600;
+    color: rgb(131, 131, 131);
+    font-size: 1.2em;
+}
+
+.navbarLinks li a:hover {
+    opacity: 0.5;
+    transition: 100ms ease-in;
+}
+
+#loginBtn {
+    color: white;
+    border-radius: 10px;
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    padding: 5px;
+    background-color: rgb(199, 193, 193);
+}
+
+#loginBtn img {
+    position: flex;
+    width: 18px;
+    height: 18px;
+}
+
+.navbarFunctions {
+    float: right;
+    width: 25%;
+    border: 2px pink solid;
+    height: 50px;
+}
+
+#navbarCart img {
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0%;
+    height: 70px;
+    width: 100%;
+    background-color: rgb(235, 232, 232);
+}
+
+footer a {
+    color: rgb(153, 153, 153);
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer p {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(153, 153, 153);
+}
