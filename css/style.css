@@ -150,7 +150,6 @@ footer p {
     width: 95%;
     height: auto;
     margin: 0 auto;
-    border: 2px red solid;
 }
 
 .women-collection li img {
@@ -161,7 +160,6 @@ footer p {
 
 .women-collection {
     float: left;
-    border: 2px blue solid;
     width: 400px;
     max-height: 700px;
     margin: 10px;
@@ -208,7 +206,6 @@ footer p {
 .men-collection {
     float: right;
     margin: 10px;
-    border: 2px green solid;
     width: 400px;
     max-height: 700px;
     position: relative;
@@ -239,9 +236,8 @@ footer p {
 }
 
 .women-men {
-    border: 2px green solid;
-    width: 700px;
-    max-height: 700px;
+    width: 800px;
+    height: 400px;
     position: relative;
     list-style: none;
     display: grid;
@@ -249,11 +245,13 @@ footer p {
 }
 
 #image-bottom2 {
-    max-width: 300px;
+    max-width: 400px;
+    border-radius: 6px;
 }
 
 #image-front2 {
-    max-width: 300px;
+    max-width: 400px;
+    border-radius: 6px;
 }
 
 #image-bottom2,
@@ -264,8 +262,8 @@ li:nth-child(1) {
 
 #image-front2,
 li:nth-child(2) {
-    grid-column: 4/6;
-    grid-row: 2/5;
+    grid-column: 3/-1;
+    grid-row: 3/5;
 }
 
 .container {
