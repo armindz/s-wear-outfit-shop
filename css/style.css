@@ -368,22 +368,73 @@
         font-family: Lato;
         font-weight: 900;
         text-transform: uppercase;
+        margin-top: 50px;
     }
     
     .article-info-container #article-price {
         font-family: Lato;
         color: rgb(126, 124, 124);
+        margin-bottom: 100px;
     }
     
     .article-info-container #article-details {
         max-width: 400px;
         font-family: Lato;
         font-weight: 600;
+        margin-bottom: 50px;
     }
     
     .article-cart-form {
         font-family: Lato;
+        max-width: 400px;
         font-weight: 600;
         color: rgb(163, 161, 161);
         display: flex;
+        /* flex-direction: column; */
+    }
+    
+    .article-cart-form #article-amount {
+        width: 50px;
+        height: 50px;
+        margin-right: 25px;
+        border-radius: 6px;
+        outline-style: none;
+    }
+    
+    .article-cart-form #article-amount-label {
+        padding: 15px;
+        float: left;
+    }
+    
+    .article-cart-form #article-submit-btn {
+        width: 150px;
+        height: 50px;
+        border-radius: 5px;
+        font-family: Lato;
+        font-weight: 600;
+        font-size: 1em;
+        color: rgb(99, 96, 96);
+        text-transform: uppercase;
+        background-color: rgb(161, 157, 152);
+    }
+    
+    .article-cart-form #article-submit-btn:hover {
+        opacity: 0.9;
+        cursor: pointer;
+    }
+    
+    .article-cart-form #article-submit-btn img {
+        width: 20px;
+        height: auto;
+        float: left;
+    }
+    
+    .article-id-info {
+        font-family: Lato;
+        font-weight: 600;
+    }
+    
+    .article-id-info label {
+        float: left;
+        margin-right: 3px;
     }
