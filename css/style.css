@@ -271,6 +271,7 @@
         display: flex;
         justify-content: center;
         margin: 0 auto;
+        padding-top: 50px;
     }
     
     .zigzag-row {
@@ -339,4 +340,50 @@
     .zigzag-row img:hover {
         opacity: 0.9;
         transform: scale(1.01);
+    }
+    
+    .article-image-container {
+        border: 2px red solid;
+        display: flex;
+        position: relative;
+        float: left;
+        width: 45%;
+        height: 700px;
+        /*  margin: 0 auto; */
+        margin: 0 5px;
+    }
+    
+    .article-info-container {
+        border: 2px blue solid;
+        float: right;
+        width: 45%;
+        height: 700px;
+        /*  margin: 0 auto; */
+        padding: 5px;
+        margin: 0 5px;
+    }
+    
+    .article-info-container #article-title {
+        text-align: left;
+        font-family: Lato;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    
+    .article-info-container #article-price {
+        font-family: Lato;
+        color: rgb(126, 124, 124);
+    }
+    
+    .article-info-container #article-details {
+        max-width: 400px;
+        font-family: Lato;
+        font-weight: 600;
+    }
+    
+    .article-cart-form {
+        font-family: Lato;
+        font-weight: 600;
+        color: rgb(163, 161, 161);
+        display: flex;
     }
