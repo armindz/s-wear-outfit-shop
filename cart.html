@@ -129,8 +129,13 @@
                     <p id="order-data-country">Bosna and Herzegovina</p>
                     <p id="order-data-phone">+387 61</p>
 
-                    <button type="submit" id="confirm-section-submit">Order</button>
+                    <button type="button" onclick="showOrderConfirmationMsg()" id="confirm-section-submit">Order</button>
                 </div>
+            </div>
+
+            <div id="order-confirmation-message">
+                <h3>Thank you for your order!</h3>
+                <p>The order will be processed within next 48 hours.</p>
             </div>
         </div>
 
@@ -141,13 +146,27 @@
                 <div class="cart-article-card">
 
                     <div id="card-article-image-container">
-                        <img id="card-article-image" src="img/res/men-ac.jpg">
+                        <img id="card-article-image" src="img/res/men-ac.jpg ">
                     </div>
                     <div id="card-article-info">
                         <h5 id="article-card-name">NAME</h5>
                         <div class="row">
                             <p id="article-card-amount">2<span>x</span></p>
-                            <p id="article-card-price">120€</p>
+                            <p id="article-card-price">120&#8364;</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="cart-article-card">
+
+                    <div id="card-article-image-container">
+                        <img id="card-article-image" src="img/res/men-ac.jpg ">
+                    </div>
+                    <div id="card-article-info">
+                        <h5 id="article-card-name">NAME</h5>
+                        <div class="row">
+                            <p id="article-card-amount">2<span>x</span></p>
+                            <p id="article-card-price">120&#8364;</p>
                         </div>
                     </div>
 
@@ -161,21 +180,7 @@
                         <h5 id="article-card-name">NAME</h5>
                         <div class="row">
                             <p id="article-card-amount">2<span>x</span></p>
-                            <p id="article-card-price">120€</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="cart-article-card">
-
-                    <div id="card-article-image-container">
-                        <img id="card-article-image" src="img/res/men-ac.jpg">
-                    </div>
-                    <div id="card-article-info">
-                        <h5 id="article-card-name">NAME</h5>
-                        <div class="row">
-                            <p id="article-card-amount">2<span>x</span></p>
-                            <p id="article-card-price">120€</p>
+                            <p id="article-card-price">120&#8364;</p>
                         </div>
                     </div>
 
@@ -187,7 +192,7 @@
             <div class="cart-checkout">
 
                 <p>Total:</p>
-                <p id="total-price">300€</p>
+                <p id="total-price">300&#8364;</p>
             </div>
         </div>
     </div>
