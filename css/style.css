@@ -268,6 +268,7 @@
     
     .container {
         width: 95%;
+        height: auto;
         display: flex;
         justify-content: center;
         margin: 0 auto;
@@ -343,18 +344,17 @@
     }
     
     .article-image-container {
-        border: 2px red solid;
-        display: flex;
         position: relative;
+        display: flex;
         float: left;
         width: 45%;
-        height: 700px;
+        max-height: 700px;
         /*  margin: 0 auto; */
         margin: 0 5px;
+        padding: 5px;
     }
     
     .article-info-container {
-        border: 2px blue solid;
         float: right;
         width: 45%;
         height: 700px;
@@ -437,4 +437,63 @@
     .article-id-info label {
         float: left;
         margin-right: 3px;
+    }
+    /* THUMBNAIL IMG */
+    
+    .container1 {
+        position: relative;
+        height: 660px;
+        width: 960px;
+        overflow: hidden;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .container1 a {
+        float: left;
+        margin: 2%;
+    }
+    
+    .big {
+        position: absolute;
+        display: flex;
+        border-radius: 6px;
+        top: 900px;
+        right: 10%;
+        /*   max-width: 100%;
+        max-height: 68%;*/
+        max-width: 600px;
+        max-height: 450px;
+        /*  -webkit-transition: top 1s ease;
+        -moz-transition: top 1s ease;
+        -o-transition: top 1s ease;
+        -ms-transition: top 1s ease;
+        transition: top 1s ease;*/
+    }
+    
+    .featured {
+        float: none;
+        top: 200px;
+        right: 10%;
+        z-index: 1;
+        max-width: 600px;
+        max-height: 450px;
+    }
+    
+    .thumb {
+        border-radius: 6px;
+        max-height: 20%;
+        max-width: 100%;
+    }
+    
+    a:hover .thumb {
+        -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    a:hover .big {
+        top: 200px;
+        z-index: 2;
     }
