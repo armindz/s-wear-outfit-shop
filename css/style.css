@@ -587,7 +587,8 @@
     }
     
     #info-section-form #customer-info-submit,
-    #payment-section-submit {
+    #payment-section-submit,
+    #confirm-section-submit {
         width: 200px;
         height: 50px;
         border: none;
@@ -603,7 +604,8 @@
     }
     
     #info-section-form #customer-info-submit:hover,
-    #payment-section-submit:hover {
+    #payment-section-submit:hover,
+    #confirm-section-submit:hover {
         opacity: 0.9;
         cursor: pointer;
     }
@@ -648,6 +650,7 @@
     #confirm-section p {
         font-family: Lato;
         font-weight: 600;
+        font-size: 12px;
     }
     
     #confirm-section h3 {
@@ -656,6 +659,7 @@
         color: rgb(61, 61, 61);
         font-family: Lato;
         font-weight: 900;
+        font-size: 1.5em;
     }
     /* ------------ /customer info ------------ */
     /* ------------ customer checkout --------- */

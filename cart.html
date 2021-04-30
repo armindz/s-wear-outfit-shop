@@ -64,9 +64,9 @@
 
                 <a href="#" onclick="showInformationSection();" id="section-info-btn">Information</a>
                 <span style="color:rgb(179, 178, 178)">&#10095;</span>
-                <a href="#" onclick="showPaymentSection()" id="section-payment-btn">Payment</a>
+                <a href="#" onclick="showPaymentSection();" id="section-payment-btn">Payment</a>
                 <span style="color:rgb(179, 178, 178)">&#10095;</span>
-                <a href="#" onclick="showConfirmSection()" id="section-confirm-btn">Confirm</a>
+                <a href="#" onclick="showConfirmSection();" id="section-confirm-btn">Confirm</a>
             </div>
 
 
@@ -96,7 +96,7 @@
                         <input type="tel" id="customer-phone" placeholder="Phone (optional)"> </input>
 
 
-                        <button type="submit" id="customer-info-submit">Next Step</button>
+                        <button type="submit" onclick="showPaymentSection();" id="customer-info-submit">Next Step</button>
 
                     </form>
                 </div>
@@ -110,7 +110,7 @@
                         <a href="#" id="apple-payment"><img src="img/icon/aPay_logo.webp"></a>
                         <a href="#" id="klarna-payment"><img src="img/icon/klarna_logo.png"></a>
                     </div>
-                    <button type="submit" id="payment-section-submit">Continue to Confirm</button>
+                    <button type="submit" onclick="showConfirmSection();" id="payment-section-submit">Continue to Confirm</button>
                 </div>
 
 
@@ -128,6 +128,8 @@
                     </div>
                     <p id="order-data-country">Bosna and Herzegovina</p>
                     <p id="order-data-phone">+387 61</p>
+
+                    <button type="submit" onclick="showConfirmSection();" id="confirm-section-submit">Order</button>
                 </div>
             </div>
         </div>
