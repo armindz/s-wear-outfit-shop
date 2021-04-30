@@ -538,6 +538,10 @@
         color: rgb(180, 179, 179);
     }
     
+    #section-info-btn {
+        color: #333;
+    }
+    
     .sections {
         display: flex;
         float: none;
