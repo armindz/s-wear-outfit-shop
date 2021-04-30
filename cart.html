@@ -56,7 +56,88 @@
 
     </header>
 
+    <div class="container-cart">
 
+        <div class="customer-info">
+
+            <div class="section-buttons-cart">
+
+                <a href="#" onclick="showInformationSection();" id="section-info-btn">Information</a>
+                <span style="color:rgb(179, 178, 178)">&#10095;</span>
+                <a href="#" onclick="showPaymentSection()" id="section-payment-btn">Payment</a>
+                <span style="color:rgb(179, 178, 178)">&#10095;</span>
+                <a href="#" onclick="showConfirmSection()" id="section-confirm-btn">Confirm</a>
+            </div>
+
+
+            <div class="sections">
+
+                <div id="info-section">
+
+                    <form id="info-section-form">
+                        <h3>Contact information</h3>
+                        <input type="email" id="customer-mail" placeholder="E-mail" name="customer-mail"></input>
+
+                        <h3>Shipping address</h3>
+                        <div class="row">
+                            <input type="text" id="customer-fname" placeholder="First Name"> </input>
+                            <input type="text" id="customer-lname" placeholder="Last Name"> </input>
+                        </div>
+                        <input type="text" id="customer-company" placeholder="Company"> </input>
+                        <input type="text" id="customer-address" placeholder="Address"> </input>
+                        <div class="row">
+
+                            <input type="text" id="customer-postal-code" placeholder="Postal Code"> </input>
+                            <input type="text" id="customer-city" placeholder="City"> </input>
+                        </div>
+
+
+                        <input type="text" id="customer-country" placeholder="Country/Region"> </input>
+                        <input type="tel" id="customer-phone" placeholder="Phone (optional)"> </input>
+
+
+                        <button type="submit" id="customer-info-submit">Next Step</button>
+
+                    </form>
+                </div>
+
+                <div id="payment-section">
+                    <h3>Payment provider</h3>
+
+                    <div class="row">
+                        <a href="#" id="paypal-payment"><img src="img/icon/paypal_logo.webp"></a>
+                        <a href="#" id="stripe-payment"><img src="img/icon/stripe_logo.webp"></a>
+                        <a href="#" id="apple-payment"><img src="img/icon/aPay_logo.webp"></a>
+                        <a href="#" id="klarna-payment"><img src="img/icon/klarna_logo.png"></a>
+                    </div>
+                    <button type="submit" id="payment-section-submit">Continue to Confirm</button>
+                </div>
+
+
+                <div id="confirm-section">
+                    <h3>Confirm</h3>
+
+                    <p id="order-data-mail">email@email.com</p>
+                    <p id="order-data-name">Armin Dzibric</p>
+                    <p id="order-data-address">Bikodze</p>
+                    <div class="row">
+
+                        <p id="order-data-postal-code">75300</p>
+                        <p id="order-data-city">Lukavac</p>
+
+                    </div>
+                    <p id="order-data-country">Bosna and Herzegovina</p>
+                    <p id="order-data-phone">+387 61</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="customer-checkout">
+
+
+        </div>
+    </div>
 
 
 

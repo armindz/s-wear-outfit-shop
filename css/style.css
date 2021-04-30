@@ -342,6 +342,7 @@
         opacity: 0.9;
         transform: scale(1.01);
     }
+    /* ---------------- ARTICLE CONTAINER ------------ */
     
     .article-image-container {
         position: relative;
@@ -409,13 +410,14 @@
     .article-cart-form #article-submit-btn {
         width: 150px;
         height: 50px;
+        border: none;
         border-radius: 5px;
         font-family: Lato;
         font-weight: 600;
         font-size: 1em;
-        color: rgb(99, 96, 96);
+        color: rgb(216, 216, 216);
         text-transform: uppercase;
-        background-color: rgb(161, 157, 152);
+        background-color: rgb(82, 81, 81);
     }
     
     .article-cart-form #article-submit-btn:hover {
@@ -496,4 +498,183 @@
     a:hover .big {
         top: 200px;
         z-index: 2;
+    }
+    /* --------- END OF ARTICLE CONTAINER ------- */
+    /* --------------- CART CONTAINER ----------- */
+    
+    .container-cart {
+        width: 99%;
+        height: auto;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    /* --------- customer info ---------- */
+    
+    .customer-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px red solid;
+        width: 60%;
+        max-height: 800px;
+        padding: 50px 10px;
+    }
+    
+    .section-buttons-cart {
+        margin: 0 auto;
+        max-width: 400px;
+        max-height: 50px;
+    }
+    
+    #section-info-btn,
+    #section-payment-btn,
+    #section-confirm-btn {
+        text-decoration: none;
+        font-family: Lato;
+        font-weight: 600;
+        font-size: 1.3em;
+        margin: 6px;
+        color: rgb(180, 179, 179);
+    }
+    
+    .sections {
+        display: flex;
+        float: none;
+        width: 90%;
+        max-width: 800px;
+        max-height: 800px;
+        border-top: 1px rgb(241, 241, 241) solid;
+        margin: 10px auto;
+        padding: 10px 2px;
+        align-items: center;
+    }
+    
+    #info-section {
+        /*display: flex;*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    #info-section-form h3 {
+        color: rgb(61, 61, 61);
+        font-family: Lato;
+        font-weight: 900;
+    }
+    
+    #customer-mail,
+    #customer-fname,
+    #customer-lname,
+    #customer-company,
+    #customer-address,
+    #customer-postal-code,
+    #customer-city,
+    #customer-country,
+    #customer-phone {
+        margin: 10px auto;
+        width: 100%;
+        height: 35px;
+        border: 1px rgb(209, 209, 209) solid;
+        border-radius: 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        color: rgb(117, 106, 106);
+        outline-color: rgb(163, 163, 163);
+    }
+    
+    #info-section-form #customer-info-submit,
+    #payment-section-submit {
+        width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        font-family: Lato;
+        font-weight: 600;
+        font-size: 1em;
+        color: rgb(216, 216, 216);
+        margin-top: 20px;
+        text-transform: uppercase;
+        background-color: rgb(82, 81, 81);
+        float: right;
+    }
+    
+    #info-section-form #customer-info-submit:hover,
+    #payment-section-submit:hover {
+        opacity: 0.9;
+        cursor: pointer;
+    }
+    
+    #payment-section {
+        /* display: */
+        display: none;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    #payment-section h3 {
+        display: flex;
+        top: 0%;
+        color: rgb(61, 61, 61);
+        font-family: Lato;
+        font-weight: 900;
+    }
+    
+    #payment-section img {
+        border: none;
+        border-radius: 8px;
+        max-width: 80px;
+        max-height: auto;
+    }
+    
+    #payment-section img:hover {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+    
+    #payment-section a {
+        margin: 10px auto;
+    }
+    
+    #confirm-section {
+        display: none;
+        flex-direction: column;
+    }
+    
+    #confirm-section p {
+        font-family: Lato;
+        font-weight: 600;
+    }
+    
+    #confirm-section h3 {
+        display: flex;
+        top: 0%;
+        color: rgb(61, 61, 61);
+        font-family: Lato;
+        font-weight: 900;
+    }
+    /* ------------ /customer info ------------ */
+    /* ------------ customer checkout --------- */
+    
+    .customer-checkout {
+        display: flex;
+        justify-content: center;
+        border: 2px blue solid;
+        width: 40%;
+        max-height: 800px;
+    }
+    /* ------------ end of customer checkout -------- */
+    
+    .row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    
+     ::placeholder {
+        color: rgb(122, 122, 122);
     }
