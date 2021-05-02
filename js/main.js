@@ -1,6 +1,5 @@
 let Article = function(id, name, type, size, gender, price, quantity, text, color, isOnSale) {
 
-
     this.id = id;
     this.name = name;
     this.type = type;
@@ -49,33 +48,41 @@ let Article = function(id, name, type, size, gender, price, quantity, text, colo
         return this.color;
     };
 
-    this.isOnSale = function() {
+    this.get_isOnSale = function() {
         return this.isOnSale;
-    }
+    };
+    this.setOnSale = function() {
 
+        this.isOnSale = true;
+    };
 
+    this.setNotOnSale = function() {
+        this.isOnSale = false;
+    };
 };
+
 const FEMALE_GENDER = "FEMALE";
 const MALE_GENDER = "MALE";
 let listOfArticles = [];
-createArticle(0, "POLO MAJICA", "MAJICA", "L", "MALE", 2, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "RED", 0);
-createArticle(1, "KRATKI RUKAV MAJICA", "MAJICA", "L", "FEMALE", 2, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREY", 1);
-createArticle(2, "KOSULJA", "KOSULJA", "XL", "MALE", 5, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREEN", 1);
-createArticle(3, "HALJINA", "HALJINA", "M", "FEMALE", 3, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "YELLOW", 1);
-createArticle(4, "KOSULJA", "KOSULJA", "XL", "MALE", 5, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREEN", 1);
-createArticle(5, "JAKNA", "JAKNA", "XL", "MALE", 5, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREEN", 0);
-createArticle(6, "KOSULJA1", "KOSULJA", "M", "MALE", 5, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREEN", 1);
-createArticle(7, "KOSULJA2", "KOSULJA", "XL", "MALE", 5, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREEN", 0);
-createArticle(8, "KOSULJA3", "KOSULJA", "L", "MALE", 5, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit?", "GREEN", 0);
+createArticle(0, "POLO MAJICA", "MAJICA", "L", "MALE", 2, 1, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ", "RED", true);
+createArticle(1, "KRATKI RUKAV MAJICA", "MAJICA", "L", "FEMALE", 2, 1, "Lorem ipsum dolor, sit amet conseentore consequatur m suscipit?", "GREY", true);
+createArticle(2, "KOSULJA", "KOSULJA", "XL", "MALE", 5, 1, "Lorem ipsum dolor, sit amet consectetur adipisicing elit.debiti suscipit?", "GREEN", false);
+createArticle(3, "HALJINA", "HALJINA", "M", "FEMALE", 3, 1, "Lorem ipsum dolor, sit amet consectetur adipisidem suscipit?", "YELLOW", true);
+createArticle(4, "KOSULJA", "KOSULJA", "XL", "MALE", 5, 2, "Lorem ipsum dolor, sit amet consectetur adipisicingm suscipit?", "GREEN", true);
+createArticle(5, "JAKNA", "JAKNA", "XL", "MALE", 5, 3, "Lorem ipsum dolor, sit amet", "GREEN", false);
+createArticle(6, "KOSULJA1", "KOSULJA", "M", "MALE", 5, 3, "Lorem ipsum dolor, sit amet consectetur adipisicing", "GREEN", true);
+createArticle(7, "KOSULJA2", "KOSULJA", "XL", "MALE", 5, 3, "Lorem ipsum dolor, sit amet consectetur ", "GREEN", true);
+createArticle(8, "KOSULJA3", "KOSULJA", "L", "MALE", 5, 2, "Lorem ipsum dolor, sit amet consectetur", "GREEN", true);
 
 
 console.log(listOfArticles);
 
 
 
-function createArticle(id, name, type, gender, price, quantity, text, color) {
+function createArticle(id, name, type, size, gender, price, quantity, text, color, isOnSale) {
 
-    let article = new Article(id, name, type, gender, price, quantity, text, color);
+    let article = new Article(id, name, type, size, gender, price, quantity, text, color, isOnSale);
+
     listOfArticles.push(article);
 }
 
@@ -86,8 +93,9 @@ function getListOfArticles() {
 
 function insertArticlesIntoSale() {
 
+    let articlesOnSaleList = getArticlesListOnSale();
     const CARDS_PER_ROW = 4;
-    const ROWS = genderList.length / CARDS_PER_ROW;
+    const ROWS = articlesOnSaleList.length / CARDS_PER_ROW;
     // variables below are declared outside to avoid interrupting values at new loop
     let i = 0;
     let j = 0;
@@ -98,12 +106,12 @@ function insertArticlesIntoSale() {
         // prepare card printing by creating new zigzag row
         let div = document.createElement("DIV");
         div.setAttribute("class", "container");
-        document.getElementById("women-container").appendChild(div);
+        document.getElementById("sale-container").appendChild(div);
         let ul = document.createElement("UL");
         ul.setAttribute("class", "zigzag-row");
         div.appendChild(ul);
 
-        for (i; i < genderList.length; i++) {
+        for (i; i < articlesOnSaleList.length; i++) {
 
 
             if (i % CARDS_PER_ROW != 0) { // insert card into existing row if "i" is not equal to card per row
@@ -111,15 +119,15 @@ function insertArticlesIntoSale() {
                 // insert card into row
                 ul.innerHTML += "<li>" +
                     "<img src='img/res/men1.jpg'>" +
-                    "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
+                    "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
+                    "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + "€</p>" +
                     "</li>";
             } else { // create new row if "i" is equal to card per row
 
                 // prepare card printing by creating new zigzag row
                 let newDiv = document.createElement("DIV");
                 newDiv.setAttribute("class", "container");
-                document.getElementById("women-container").appendChild(newDiv);
+                document.getElementById("sale-container").appendChild(newDiv);
                 let newUl = document.createElement("UL");
                 newUl.setAttribute("class", "zigzag-row");
                 newDiv.appendChild(newUl);
@@ -127,8 +135,8 @@ function insertArticlesIntoSale() {
                 // insert card into row
                 newUl.innerHTML += "<li>" +
                     "<img src='img/res/men1.jpg'>" +
-                    "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
+                    "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
+                    "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + "€</p>" +
                     "</li>";
 
                 // declare new ul and div as default one to be executed on next iteration
@@ -140,7 +148,7 @@ function insertArticlesIntoSale() {
 
 }
 
-}
+
 
 function insertArticlesIntoWomen() {
 
@@ -257,6 +265,18 @@ function insertArticlesIntoMen() {
         }
     }
 
+}
+
+function getArticlesListOnSale() {
+    let onSaleArticles = [];
+    // iterate over list of articles in order to collect only specific gender
+    for (let i = 0; i < listOfArticles.length; i++) {
+
+        if (listOfArticles[i].get_isOnSale()) {
+            onSaleArticles.push(listOfArticles[i]);
+        }
+    }
+    return onSaleArticles;
 }
 
 function getArticlesListByGender(gender) {
