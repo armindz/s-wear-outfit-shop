@@ -64,6 +64,7 @@ let Article = function(id, name, type, size, gender, price, quantity, text, colo
 const FEMALE_GENDER = "FEMALE";
 const MALE_GENDER = "MALE";
 let listOfArticles = [];
+let cartArticles = [];
 createArticle(0, "POLO MAJICA", "MAJICA", "L", "MALE", 2, 1, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ", "RED", true);
 createArticle(1, "KRATKI RUKAV MAJICA", "MAJICA", "L", "FEMALE", 2, 1, "Lorem ipsum dolor, sit amet conseentore consequatur m suscipit?", "GREY", true);
 createArticle(2, "KOSULJA", "KOSULJA", "XL", "MALE", 5, 1, "Lorem ipsum dolor, sit amet consectetur adipisicing elit.debiti suscipit?", "GREEN", false);
@@ -117,8 +118,8 @@ function insertArticlesIntoSale() {
             if (i % CARDS_PER_ROW != 0) { // insert card into existing row if "i" is not equal to card per row
 
                 // insert card into row
-                ul.innerHTML += "<li>" +
-                    "<img src='img/res/men1.jpg'>" +
+                ul.innerHTML += "<li id=" + articlesOnSaleList[i].get_id() + ">" +
+                    "<img onclick='viewArticle(" + articlesOnSaleList[i].get_id() + ")' src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + "€</p>" +
                     "</li>";
@@ -133,8 +134,8 @@ function insertArticlesIntoSale() {
                 newDiv.appendChild(newUl);
 
                 // insert card into row
-                newUl.innerHTML += "<li>" +
-                    "<img src='img/res/men1.jpg'>" +
+                newUl.innerHTML += "<li id=" + articlesOnSaleList[i].get_id() + ">" +
+                    "<img onclick='viewArticle(" + articlesOnSaleList[i].get_id() + ")' src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + "€</p>" +
                     "</li>";
@@ -177,7 +178,7 @@ function insertArticlesIntoWomen() {
 
                 // insert card into row
                 ul.innerHTML += "<li>" +
-                    "<img src='img/res/men1.jpg'>" +
+                    "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
                     "</li>";
@@ -193,7 +194,7 @@ function insertArticlesIntoWomen() {
 
                 // insert card into row
                 newUl.innerHTML += "<li>" +
-                    "<img src='img/res/men1.jpg'>" +
+                    "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
                     "</li>";
@@ -237,7 +238,7 @@ function insertArticlesIntoMen() {
 
                 // insert card into row
                 ul.innerHTML += "<li>" +
-                    "<img src='img/res/men1.jpg'>" +
+                    "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
                     "</li>";
@@ -253,7 +254,7 @@ function insertArticlesIntoMen() {
 
                 // insert card into row
                 newUl.innerHTML += "<li>" +
-                    "<img src='img/res/men1.jpg'>" +
+                    "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
                     "</li>";
@@ -289,6 +290,15 @@ function getArticlesListByGender(gender) {
         }
     }
     return genderList;
+}
+
+function getArticleById(id) {
+    for (let i = 0; i < listOfArticles.length; i++) {
+        if (listOfArticles[i].get_id() === id) {
+            return listOfArticles[i];
+        }
+    }
+
 }
 
 function showInformationSection() {
@@ -332,4 +342,18 @@ function showOrderConfirmationMsg() {
     document.getElementById("section-payment-btn").style.color = "rgb(180, 179, 179)";
     document.getElementById("section-info-btn").style.color = "rgb(180, 179, 179)";
 
+}
+
+function viewArticle(id) {
+    let article = getArticleById(id);
+
+    localStorage.setItem("article-id", id);
+
+    //   document.getElementById("article-title").innerText = "BLA BLA";
+    window.location.href = "./article.html";
+}
+
+function addToCartList(articleId) {
+    let article = getArticleById(articleId);
+    cartArticles.push(article);
 }

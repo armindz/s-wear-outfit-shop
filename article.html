@@ -94,14 +94,29 @@
 
 
         </div>
-
+        <script>
+            let id = localStorage.getItem("article-id");
+            let article = getArticleById(parseInt(id));
+        </script>
 
         <div class="article-info-container">
 
-            <h2 id="article-title">Name of article </h2>
-            <h3 id="article-price">150€ </h3>
+            <h2 id="article-title">
+                <script>
+                    document.write(article.get_name());
+                </script>
+            </h2>
+            <h3 id="article-price">
+                <script>
+                    document.write(article.get_price());
+                </script><span>€</span>
+            </h3>
 
-            <p id="article-details">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur nesciunt iure nam. Quas cupiditate quos error quam, inventore consequatur debitis cum amet molestias in, odit et rerum corrupti quidem suscipit? </p>
+            <p id="article-details">
+                <script>
+                    document.write(article.get_text());
+                </script>
+            </p>
 
             <form class="article-cart-form">
                 <label id="article-amount-label" for="amount">Amount</label>
@@ -120,7 +135,11 @@
 
             <div class="article-id-info">
                 <label for="id">ID:</label>
-                <p id="article-id">12345</p>
+                <p id="article-id">
+                    <script>
+                        document.write(article.get_id());
+                    </script>
+                </p>
             </div>
 
 
