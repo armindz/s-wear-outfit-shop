@@ -178,7 +178,9 @@ function insertArticlesIntoWomen() {
 
                 // insert card into row
                 ul.innerHTML += "<li>" +
-                    "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
+                    "<img id='article-card' name=" +
+                    genderList[i].get_id() +
+                    " onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
                     "</li>";
@@ -194,7 +196,9 @@ function insertArticlesIntoWomen() {
 
                 // insert card into row
                 newUl.innerHTML += "<li>" +
-                    "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
+                    "<img id='article-card' name=" +
+                    genderList[i].get_id() +
+                    " onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
                     "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
                     "</li>";
@@ -346,14 +350,120 @@ function showOrderConfirmationMsg() {
 
 function viewArticle(id) {
     let article = getArticleById(id);
-
     localStorage.setItem("article-id", id);
 
     //   document.getElementById("article-title").innerText = "BLA BLA";
     window.location.href = "./article.html";
+
+
 }
 
-function addToCartList(articleId) {
+function handleCartList(articleId) {
+
+    if (cartArticles.length != 0) {
+        for (let i = 0; i < cartArticles.length; i++) {
+
+            if (cartArticles[i].get_id() == articleId) {
+
+                removeFromCart(articleId);
+                document.getElementById("article-submit-btn").innerHTML = '<img src="img/icon/cart1.png "><span>Add to cart</span>';
+
+            } else {
+                addToCart(articleId);
+                document.getElementById("article-submit-btn").innerHTML = "REMOVE";
+                console.log(cartArticles[i].get_id());
+            }
+        }
+
+    } else {
+        addToCart(articleId);
+        document.getElementById("article-submit-btn").innerHTML = "REMOVE";
+    }
+}
+
+function addToCart(articleId) {
     let article = getArticleById(articleId);
     cartArticles.push(article);
+}
+
+function removeFromCart(articleId) {
+
+    for (let i = 0; i < cartArticles.length; i++) {
+        if (cartArticles[i].get_id() == articleId) {
+            cartArticles.splice(i, 1);
+        }
+    }
+}
+
+function articlePreview(articleId) {
+
+    let article = getArticleById(parseInt(articleId));
+    let infoContainer = document.getElementById("info-container");
+
+    // article title
+    let title = document.createElement("H2");
+    title.setAttribute("id", "article-title");
+    title.innerHTML = article.get_name();
+    infoContainer.appendChild(title);
+
+    // article price
+    let price = document.createElement("H3");
+    price.setAttribute("id", "article-price");
+    price.innerHTML = article.get_price() + "€";
+    infoContainer.appendChild(price);
+
+    // article details
+    let details = document.createElement("p");
+    details.setAttribute("id", "article-details");
+    details.innerHTML = article.get_text();
+    infoContainer.appendChild(details);
+
+    // article cart form
+    let cartForm = document.createElement("FORM");
+    cartForm.setAttribute("class", "article-cart-form");
+    cartForm.setAttribute("id", "cart-form");
+    infoContainer.appendChild(cartForm);
+
+
+
+    // quantity label
+    let quantityLabel = document.createElement("label");
+    quantityLabel.setAttribute("id", "article-amount-label");
+    quantityLabel.innerHTML = "Quantity";
+    document.getElementById("cart-form").appendChild(quantityLabel);
+
+    // article quantity in cart form
+    let quantity = document.createElement("select");
+    quantity.setAttribute("id", "article-amount");
+    for (let i = 1; i < article.get_quantity() + 1; i++) {
+        quantity.innerHTML += "<option value='" + i + "'>" + i + "</option>";
+    }
+
+    document.getElementById("cart-form").appendChild(quantity);
+
+    // article add to cart button in cart form
+    let submit = document.createElement("BUTTON");
+    submit.setAttribute("id", "article-submit-btn");
+    submit.setAttribute("type", "button");
+    submit.setAttribute("onclick", "handleCartList(" + article.get_id() + ")")
+    submit.innerHTML = '<img src="img/icon/cart1.png "><span>Add to cart</span>';
+    document.getElementById("cart-form").appendChild(submit);
+
+    // div containing id info
+    let id_info = document.createElement("DIV");
+    id_info.setAttribute("class", "article-id-info");
+    id_info.setAttribute("id", "id-info");
+    infoContainer.appendChild(id_info);
+
+    // label for id
+    let idLabel = document.createElement("label");
+    idLabel.innerHTML = "ID:";
+    document.getElementById("id-info").appendChild(idLabel);
+
+    // article id
+    let id = document.createElement("P");
+    id.setAttribute("id", "article-id");
+    id.innerHTML = article.get_id();
+    document.getElementById("id-info").appendChild(id);
+
 }

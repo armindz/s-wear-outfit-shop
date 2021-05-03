@@ -17,7 +17,7 @@
 
 
 
-<body>
+<body onload="articlePreview(localStorage.getItem('article-id'))">
 
     <header>
         <div class="navbar">
@@ -99,48 +99,9 @@
             let article = getArticleById(parseInt(id));
         </script>
 
-        <div class="article-info-container">
-
-            <h2 id="article-title">
-                <script>
-                    document.write(article.get_name());
-                </script>
-            </h2>
-            <h3 id="article-price">
-                <script>
-                    document.write(article.get_price());
-                </script><span>€</span>
-            </h3>
-
-            <p id="article-details">
-                <script>
-                    document.write(article.get_text());
-                </script>
-            </p>
-
-            <form class="article-cart-form">
-                <label id="article-amount-label" for="amount">Amount</label>
-                <select name="amount" id="article-amount">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+        <div class="article-info-container" id="info-container">
 
 
-                </select>
-
-                <button id="article-submit-btn"><img src="img/icon/cart1.png"><span>Add to cart</span></button>
-
-
-            </form>
-
-            <div class="article-id-info">
-                <label for="id">ID:</label>
-                <p id="article-id">
-                    <script>
-                        document.write(article.get_id());
-                    </script>
-                </p>
-            </div>
 
 
         </div>
