@@ -17,7 +17,7 @@
 
 
 
-<body>
+<body onload="cartPreview()">
 
     <header>
         <div class="navbar">
@@ -142,57 +142,18 @@
 
         <div class="customer-checkout">
             <h3>Cart</h3>
-            <div class="cart-articles">
+            <div class="cart-articles" id="cart-article-cards">
                 <div class="cart-article-card">
 
-                    <div id="card-article-image-container">
-                        <img id="card-article-image" src="img/res/men-ac.jpg ">
-                    </div>
-                    <div id="card-article-info">
-                        <h5 id="article-card-name">NAME</h5>
-                        <div class="row">
-                            <p id="article-card-amount">2<span>x</span></p>
-                            <p id="article-card-price">120&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="cart-article-card">
-
-                    <div id="card-article-image-container">
-                        <img id="card-article-image" src="img/res/men-ac.jpg ">
-                    </div>
-                    <div id="card-article-info">
-                        <h5 id="article-card-name">NAME</h5>
-                        <div class="row">
-                            <p id="article-card-amount">2<span>x</span></p>
-                            <p id="article-card-price">120&#8364;</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="cart-article-card">
-
-                    <div id="card-article-image-container">
-                        <img id="card-article-image" src="img/res/men-ac.jpg">
-                    </div>
-                    <div id="card-article-info">
-                        <h5 id="article-card-name">NAME</h5>
-                        <div class="row">
-                            <p id="article-card-amount">2<span>x</span></p>
-                            <p id="article-card-price">120&#8364;</p>
-                        </div>
-                    </div>
 
                 </div>
 
 
             </div>
 
-            <div class="cart-checkout">
+            <div class="cart-checkout" id="checkout-cart">
 
-                <p>Total:</p>
-                <p id="total-price">300&#8364;</p>
+
             </div>
         </div>
     </div>

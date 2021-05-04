@@ -75,7 +75,7 @@ createArticle(6, "KOSULJA1", "KOSULJA", "M", "MALE", 5, 3, "Lorem ipsum dolor, s
 createArticle(7, "KOSULJA2", "KOSULJA", "XL", "MALE", 5, 3, "Lorem ipsum dolor, sit amet consectetur ", "GREEN", true);
 createArticle(8, "KOSULJA3", "KOSULJA", "L", "MALE", 5, 2, "Lorem ipsum dolor, sit amet consectetur", "GREEN", true);
 
-
+handleCartList(0);
 console.log(listOfArticles);
 
 
@@ -359,8 +359,13 @@ function viewArticle(id) {
 }
 
 function handleCartList(articleId) {
+    console.log("pozvana");
 
-    if (cartArticles.length != 0) {
+    if (cartArticles.length == 0) {
+        addToCart(articleId);
+        document.getElementById("article-submit-btn").innerHTML = "REMOVE";
+        console.log(cartArticles[0]);
+    } else {
         for (let i = 0; i < cartArticles.length; i++) {
 
             if (cartArticles[i].get_id() == articleId) {
@@ -370,14 +375,13 @@ function handleCartList(articleId) {
 
             } else {
                 addToCart(articleId);
+
+                console.log(cartArticles.length);
                 document.getElementById("article-submit-btn").innerHTML = "REMOVE";
-                console.log(cartArticles[i].get_id());
+
             }
         }
 
-    } else {
-        addToCart(articleId);
-        document.getElementById("article-submit-btn").innerHTML = "REMOVE";
     }
 }
 
@@ -465,5 +469,37 @@ function articlePreview(articleId) {
     id.setAttribute("id", "article-id");
     id.innerHTML = article.get_id();
     document.getElementById("id-info").appendChild(id);
+
+}
+
+function cartPreview() {
+
+    for (let i = 0; i < cartArticles.length; i++) {
+
+        let article = document.createElement("DIV");
+        article.setAttribute("class", "card-article-card");
+        article.innerHTML = "<div id='card-article-image-container'>" +
+            "<img id='card-article-image' src='img/res/men-ac.jpg'> </div>" +
+            " <div id='card-article-info'>" +
+            "<h5 id='article-card-name'>" + cartArticles[i].get_name() + "</h5>" +
+            "<div class='row'>" +
+            "<p id='article-card-amount'>1<span>x</span></p>" +
+            "<p id='article-card-price'>" + cartArticles[i].get_price() + "&#8364;</p> </div></div>";
+        document.getElementById("cart-article-cards").appendChild(article);
+
+    }
+    let totalAmount = 0;
+    for (let j = 0; j < cartArticles.length; j++) {
+        totalAmount += cartArticles[j].get_price();
+    }
+    let totalPriceLabel = document.createElement("P");
+    totalPriceLabel.innerHTML = "TOTAL: ";
+    document.getElementById("checkout-cart").appendChild(totalPriceLabel);
+
+    let totalPrice = document.createElement("P");
+    totalPrice.setAttribute("id", "total-price");
+    totalPrice.innerHTML = totalAmount + "&#8364;";
+    document.getElementById("checkout-cart").appendChild(totalPrice);
+
 
 }
