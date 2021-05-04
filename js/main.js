@@ -61,105 +61,150 @@ let Article = function(id, name, type, size, gender, price, quantity, text, colo
     };
 };
 
+// constants
 const FEMALE_GENDER = "FEMALE";
 const MALE_GENDER = "MALE";
+const CURRENCY_EURO = "&#8364;";
+
+// lists
 let listOfArticles = [];
 let cartArticles = [];
-createArticle(0, "POLO MAJICA", "MAJICA", "L", "MALE", 2, 1, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ", "RED", true);
-createArticle(1, "KRATKI RUKAV MAJICA", "MAJICA", "L", "FEMALE", 2, 1, "Lorem ipsum dolor, sit amet conseentore consequatur m suscipit?", "GREY", true);
-createArticle(2, "KOSULJA", "KOSULJA", "XL", "MALE", 5, 1, "Lorem ipsum dolor, sit amet consectetur adipisicing elit.debiti suscipit?", "GREEN", false);
-createArticle(3, "HALJINA", "HALJINA", "M", "FEMALE", 3, 1, "Lorem ipsum dolor, sit amet consectetur adipisidem suscipit?", "YELLOW", true);
-createArticle(4, "KOSULJA", "KOSULJA", "XL", "MALE", 5, 2, "Lorem ipsum dolor, sit amet consectetur adipisicingm suscipit?", "GREEN", true);
-createArticle(5, "JAKNA", "JAKNA", "XL", "MALE", 5, 3, "Lorem ipsum dolor, sit amet", "GREEN", false);
-createArticle(6, "KOSULJA1", "KOSULJA", "M", "MALE", 5, 3, "Lorem ipsum dolor, sit amet consectetur adipisicing", "GREEN", true);
-createArticle(7, "KOSULJA2", "KOSULJA", "XL", "MALE", 5, 3, "Lorem ipsum dolor, sit amet consectetur ", "GREEN", true);
-createArticle(8, "KOSULJA3", "KOSULJA", "L", "MALE", 5, 2, "Lorem ipsum dolor, sit amet consectetur", "GREEN", true);
 
+// use to test
+createArticle(0, "SPACE DYE POLO SHIRT", "T-SHIRT", "L", "MALE", 2, 1, "This polo is knitted in a soft cotton blend for cool comfort and detailed with three button fastenings at the collar. ", "RED", true);
+createArticle(1, "SHORT SLEEVE T-SHIRT", "T-SHIRT", "M", "FEMALE", 33, 6, "Made from soft cotton for cool and breathable comfort on the warmest days, it's detailed with a Cuban collar and comes in a regular fit for a relaxed look and feel.", "GREY", true);
+createArticle(2, "GUINNESS SHIRT", "SHIRT", "XL", "MALE", 5, 4, "Delight the Guinness fan in your life with this classically cool tee - styled in soft grey cotton with a simple crew neckline, ", "GREEN", false);
+createArticle(3, "DRESS - CULT GAIA", "DRESS", "M", "FEMALE", 3, 9, "Keeping it cute and casual. Smock dress with a fill v-neckline for that extra feminine look. ", "YELLOW", true);
+createArticle(4, "CHEVRON CREW SHIRT", "SHIRT", "XL", "MALE", 5, 2, "Styled with on-trend panel detailing in a contrast black chevron design, this crew neck jumper is made from a soft brushback cotton blend for all-day comfort.", "YELLOW", true);
+createArticle(5, "CAMEL FAUX SUEDE JACKET", "JACKET", "M", "FEMALE", 89, 3, "Take the look into the warmer season with our faux suede rendition. In the classic biker shape with a silver zip front and zipped side pockets", "WHITE", false);
+createArticle(6, "LONG SLEEVE SHIRT", "SHIRT", "M", "MALE", 5, 3, "Lorem ipsum dolor, sit amet consectetur adipisicing", "GREEN", true);
+createArticle(7, "DRESS BALMAIN", "DRESS", "XL", "MALE", 240, 3, " it'll take you effortlessly into the spring and summer months ? just throw it on with your favourite trainers and you're good to go. ", "BLUE", true);
+createArticle(8, "SHIRT - RUSSIAN COLLAR", "SHIRT", "L", "MALE", 5, 2, "Lorem ipsum dolor, sit amet consectetur", "GREEN", true);
+createArticle(9, "OVERSIZED DIP BACK DRESS", "DRESS", "L", "FEMALE", 84, 2, "An oversized shirt dress featuring button through front and tie dye print with a dip back hem design", "BLUE", true);
+createArticle(10, "STRAPPY CAMI BODYSUIT", "BODYSUIT", "L", "FEMALE", 51, 4, "Strappy cami bodysuit in a jersey fabric with popper fastening.", "WHITE", false);
+createArticle(11, "BLACK POLKA DRESS", "SHIRT", "L", "FEMALE", 96, 2, "Black polka dot short sleeve ruched bust milkmaid style midi dress in a stretch crepe fabric.", "BLACK", true);
+createArticle(12, "NAVY BUTTON FRONT BLOUSE", "SHIRT", "L", "MALE", 43, 2, "Smart and simple, this timeless navy blouse ensures a polished finished. Styled with a collared button front, it's finished with turn-tab short sleeves for added elegance. Perfect for the office and formal dressing alike.", "GREEN", false);
+createArticle(13, "KHAKI HARRINGTON JACKET", "JACKET", "XL", "MALE", 129, 2, "Put a smart new spin on your cold-weather essentials with our classic Harrington jacket. In khaki, it comes fully lined for extra warmth and features a showerproof finish to help you brave the wet weather in style.", "GREEN", true);
+createArticle(14, "US ATHLETIC BROOKLYN T-SHIRT", "T-SHIRT", "L", "MALE", 69, 2, "These navy joggers come in a comfy cuffed fit with an elasticated drawstring waist and two handy side pockets for essential storage.", "WHITE", false);
+createArticle(15, "APRIL RIPPED JEANS", "JEANS", "L", "FEMALE", 48, 2, "Designed to flatter your legs without compromising on comfort, these soft touch skinnies come in vintage wash denim with edgy ripped detailing. ", "GREY", true);
+createArticle(16, "REGATTA NAVY LAINE JACKET", "JACKET", "M", "FEMALE", 146, 2, "Regatta Navy Laine Jacket", "BLACK", false);
 handleCartList(0);
-console.log(listOfArticles);
 
 
 
-function createArticle(id, name, type, size, gender, price, quantity, text, color, isOnSale) {
+
+function createArticle(id, name, type, size, gender, price, quantity, text, color, isOnSale) { // mechanism used to create article with data forwarded
 
     let article = new Article(id, name, type, size, gender, price, quantity, text, color, isOnSale);
-
     listOfArticles.push(article);
 }
 
 
-function getListOfArticles() {
+function getListOfArticles() { // list of articles getter
+
     return listOfArticles;
 }
 
-function insertArticlesIntoSale() {
 
-    let articlesOnSaleList = getArticlesListOnSale();
-    const CARDS_PER_ROW = 4;
-    const ROWS = articlesOnSaleList.length / CARDS_PER_ROW;
-    // variables below are declared outside to avoid interrupting values at new loop
-    let i = 0;
-    let j = 0;
+function getArticlesListOnSale() { // get list of articles declared as on-sale-item
 
+    let onSaleArticles = [];
+    // iterate over list of articles in order to collect only specific gender
+    for (let i = 0; i < listOfArticles.length; i++) {
 
-    for (j; j < ROWS; j++) {
-
-        // prepare card printing by creating new zigzag row
-        let div = document.createElement("DIV");
-        div.setAttribute("class", "container");
-        document.getElementById("sale-container").appendChild(div);
-        let ul = document.createElement("UL");
-        ul.setAttribute("class", "zigzag-row");
-        div.appendChild(ul);
-
-        for (i; i < articlesOnSaleList.length; i++) {
-
-
-            if (i % CARDS_PER_ROW != 0) { // insert card into existing row if "i" is not equal to card per row
-
-                // insert card into row
-                ul.innerHTML += "<li id=" + articlesOnSaleList[i].get_id() + ">" +
-                    "<img onclick='viewArticle(" + articlesOnSaleList[i].get_id() + ")' src='img/res/men1.jpg'>" +
-                    "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + "€</p>" +
-                    "</li>";
-            } else { // create new row if "i" is equal to card per row
-
-                // prepare card printing by creating new zigzag row
-                let newDiv = document.createElement("DIV");
-                newDiv.setAttribute("class", "container");
-                document.getElementById("sale-container").appendChild(newDiv);
-                let newUl = document.createElement("UL");
-                newUl.setAttribute("class", "zigzag-row");
-                newDiv.appendChild(newUl);
-
-                // insert card into row
-                newUl.innerHTML += "<li id=" + articlesOnSaleList[i].get_id() + ">" +
-                    "<img onclick='viewArticle(" + articlesOnSaleList[i].get_id() + ")' src='img/res/men1.jpg'>" +
-                    "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + "€</p>" +
-                    "</li>";
-
-                // declare new ul and div as default one to be executed on next iteration
-                ul = newUl;
-                div = newDiv;
-            }
+        if (listOfArticles[i].get_isOnSale()) {
+            onSaleArticles.push(listOfArticles[i]);
         }
     }
-
+    return onSaleArticles;
 }
 
 
+function getArticlesListByGender(gender) { // return list of gender-based articles 
 
-function insertArticlesIntoWomen() {
+    let genderList = [];
+    // iterate over list of articles in order to collect only specific gender
+    for (let i = 0; i < listOfArticles.length; i++) {
+        if (listOfArticles[i].get_gender() === gender) {
+            genderList.push(listOfArticles[i]);
+        }
+    }
+    return genderList;
+}
+
+
+function getArticleById(id) { // return article containing forwarded id
+
+    for (let i = 0; i < listOfArticles.length; i++) {
+        if (listOfArticles[i].get_id() === id) {
+            return listOfArticles[i];
+        }
+    }
+}
+
+// pass value & redirect
+function viewArticle(id) {
+
+    let article = getArticleById(id);
+    localStorage.setItem("article-id", id);
+    window.location.href = "./article.html";
+
+
+}
+
+// mechanism for managing cart list
+function handleCartList(articleId) {
+
+    if (cartArticles.length == 0) { // if empty
+        addToCart(articleId);
+        document.getElementById("article-submit-btn").innerHTML = "REMOVE";
+        console.log(cartArticles[0]);
+    } else { // if list is not empty
+        for (let i = 0; i < cartArticles.length; i++) {
+
+            if (cartArticles[i].get_id() == articleId) { // if already contains article
+
+                removeFromCart(articleId);
+                document.getElementById("article-submit-btn").innerHTML = '<img src="img/icon/cart1.png "><span>Add to cart</span>';
+
+            } else {
+                addToCart(articleId);
+
+                console.log(cartArticles.length);
+                document.getElementById("article-submit-btn").innerHTML = "REMOVE";
+
+            }
+        }
+
+    }
+}
+
+// add to cart by forwarding article id
+function addToCart(articleId) {
+
+    let article = getArticleById(articleId);
+    cartArticles.push(article);
+}
+
+// remove from cart by forwarding article id
+function removeFromCart(articleId) {
+
+    for (let i = 0; i < cartArticles.length; i++) {
+        if (cartArticles[i].get_id() == articleId) {
+            cartArticles.splice(i, 1);
+        }
+    }
+}
+
+function insertArticlesIntoWomen() { // diynamically insert articles into women section 
 
     let genderList = getArticlesListByGender(FEMALE_GENDER);
     const CARDS_PER_ROW = 4;
     const ROWS = genderList.length / CARDS_PER_ROW;
+
     // variables below are declared outside to avoid interrupting values at new loop
     let i = 0;
     let j = 0;
-
 
     for (j; j < ROWS; j++) {
 
@@ -173,7 +218,6 @@ function insertArticlesIntoWomen() {
 
         for (i; i < genderList.length; i++) {
 
-
             if (i % CARDS_PER_ROW != 0) { // insert card into existing row if "i" is not equal to card per row
 
                 // insert card into row
@@ -182,7 +226,7 @@ function insertArticlesIntoWomen() {
                     genderList[i].get_id() +
                     " onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
+                    "<p id='cardPrice'>" + genderList[i].get_price() + CURRENCY_EURO + "</p>" +
                     "</li>";
             } else { // create new row if "i" is equal to card per row
 
@@ -200,7 +244,7 @@ function insertArticlesIntoWomen() {
                     genderList[i].get_id() +
                     " onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
+                    "<p id='cardPrice'>" + genderList[i].get_price() + CURRENCY_EURO + "</p>" +
                     "</li>";
 
                 // declare new ul and div as default one to be executed on next iteration
@@ -209,21 +253,17 @@ function insertArticlesIntoWomen() {
             }
         }
     }
-
 }
 
-
-
-function insertArticlesIntoMen() {
-
+function insertArticlesIntoMen() { // diynamically insert articles into men section 
 
     let genderList = getArticlesListByGender(MALE_GENDER);
     const CARDS_PER_ROW = 4;
     const ROWS = genderList.length / CARDS_PER_ROW;
+
     // variables below are declared outside to avoid interrupting values at new loop
     let i = 0;
     let j = 0;
-
 
     for (j; j < ROWS; j++) {
 
@@ -237,14 +277,13 @@ function insertArticlesIntoMen() {
 
         for (i; i < genderList.length; i++) {
 
-
             if (i % CARDS_PER_ROW != 0) { // insert card into existing row if "i" is not equal to card per row
 
                 // insert card into row
                 ul.innerHTML += "<li>" +
                     "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
+                    "<p id='cardPrice'>" + genderList[i].get_price() + CURRENCY_EURO + "</p>" +
                     "</li>";
             } else { // create new row if "i" is equal to card per row
 
@@ -260,7 +299,7 @@ function insertArticlesIntoMen() {
                 newUl.innerHTML += "<li>" +
                     "<img onclick='viewArticle(" + genderList[i].get_id() + ")'src='img/res/men1.jpg'>" +
                     "<p id='cardHeader'>" + genderList[i].get_name() + "</p>" +
-                    "<p id='cardPrice'>" + genderList[i].get_price() + "€</p>" +
+                    "<p id='cardPrice'>" + genderList[i].get_price() + CURRENCY_EURO + "</p>" +
                     "</li>";
 
                 // declare new ul and div as default one to be executed on next iteration
@@ -269,44 +308,65 @@ function insertArticlesIntoMen() {
             }
         }
     }
-
 }
 
-function getArticlesListOnSale() {
-    let onSaleArticles = [];
-    // iterate over list of articles in order to collect only specific gender
-    for (let i = 0; i < listOfArticles.length; i++) {
+function insertArticlesIntoSale() { // diynamically insert articles into sale section 
 
-        if (listOfArticles[i].get_isOnSale()) {
-            onSaleArticles.push(listOfArticles[i]);
+    let articlesOnSaleList = getArticlesListOnSale();
+    const CARDS_PER_ROW = 4;
+    const ROWS = articlesOnSaleList.length / CARDS_PER_ROW;
+
+    // variables below are declared outside to avoid interrupting values at new loop
+    let i = 0;
+    let j = 0;
+
+    for (j; j < ROWS; j++) {
+
+        // prepare card printing by creating new zigzag row
+        let div = document.createElement("DIV");
+        div.setAttribute("class", "container");
+        document.getElementById("sale-container").appendChild(div);
+        let ul = document.createElement("UL");
+        ul.setAttribute("class", "zigzag-row");
+        div.appendChild(ul);
+
+        for (i; i < articlesOnSaleList.length; i++) {
+
+            if (i % CARDS_PER_ROW != 0) { // insert card into existing row if "i" is not equal to card per row
+
+                // insert card into row
+                ul.innerHTML += "<li id=" + articlesOnSaleList[i].get_id() + ">" +
+                    "<img onclick='viewArticle(" + articlesOnSaleList[i].get_id() + ")' src='img/res/men1.jpg'>" +
+                    "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
+                    "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + CURRENCY_EURO + "</p>" +
+                    "</li>";
+            } else { // create new row if "i" is equal to card per row
+
+                // prepare card printing by creating new zigzag row
+                let newDiv = document.createElement("DIV");
+                newDiv.setAttribute("class", "container");
+                document.getElementById("sale-container").appendChild(newDiv);
+                let newUl = document.createElement("UL");
+                newUl.setAttribute("class", "zigzag-row");
+                newDiv.appendChild(newUl);
+
+                // insert card into row
+                newUl.innerHTML += "<li id=" + articlesOnSaleList[i].get_id() + ">" +
+                    "<img onclick='viewArticle(" + articlesOnSaleList[i].get_id() + ")' src='img/res/men1.jpg'>" +
+                    "<p id='cardHeader'>" + articlesOnSaleList[i].get_name() + "</p>" +
+                    "<p id='cardPrice'>" + articlesOnSaleList[i].get_price() + CURRENCY_EURO + "</p>" +
+                    "</li>";
+
+                // declare new ul and div as default one to be executed on next iteration
+                ul = newUl;
+                div = newDiv;
+            }
         }
     }
-    return onSaleArticles;
 }
 
-function getArticlesListByGender(gender) {
-
-    let genderList = [];
-    // iterate over list of articles in order to collect only specific gender
-    for (let i = 0; i < listOfArticles.length; i++) {
-        if (listOfArticles[i].get_gender() === gender) {
-            genderList.push(listOfArticles[i]);
-        }
-    }
-    return genderList;
-}
-
-function getArticleById(id) {
-    for (let i = 0; i < listOfArticles.length; i++) {
-        if (listOfArticles[i].get_id() === id) {
-            return listOfArticles[i];
-        }
-    }
-
-}
-
-function showInformationSection() {
-
+function showInformationSection() { // change dom in order section (show/hide forms)
+    // show information section and hide other sections
     document.getElementById("info-section").style.display = "flex";
     document.getElementById("payment-section").style.display = "none";
     document.getElementById("confirm-section").style.display = "none";
@@ -316,16 +376,19 @@ function showInformationSection() {
     document.getElementById("section-confirm-btn").style.color = "rgb(180, 179, 179)";
 }
 
-function showPaymentSection() {
+function showPaymentSection() { // change dom in order section (show/hide forms)
+    // show payment section and hide other sections
     document.getElementById("payment-section").style.display = "initial";
     document.getElementById("info-section").style.display = "none";
     document.getElementById("confirm-section").style.display = "none";
+
     document.getElementById("section-payment-btn").style.color = "#333";
     document.getElementById("section-confirm-btn").style.color = "rgb(180, 179, 179)";
     document.getElementById("section-info-btn").style.color = "rgb(180, 179, 179)";
 }
 
-function showConfirmSection() {
+function showConfirmSection() { // change dom in order section (show/hide forms)
+    // show confirm section and hide other sections
     document.getElementById("confirm-section").style.display = "flex";
     document.getElementById("info-section").style.display = "none";
     document.getElementById("payment-section").style.display = "none";
@@ -336,7 +399,8 @@ function showConfirmSection() {
 
 }
 
-function showOrderConfirmationMsg() {
+function showOrderConfirmationMsg() { // change dom in order section (show/hide forms)
+    // show confirmation message section and hide other sections
     document.getElementById("order-confirmation-message").style.display = "initial";
     document.getElementById("confirm-section").style.display = "none";
     document.getElementById("info-section").style.display = "none";
@@ -348,58 +412,7 @@ function showOrderConfirmationMsg() {
 
 }
 
-function viewArticle(id) {
-    let article = getArticleById(id);
-    localStorage.setItem("article-id", id);
-
-    //   document.getElementById("article-title").innerText = "BLA BLA";
-    window.location.href = "./article.html";
-
-
-}
-
-function handleCartList(articleId) {
-    console.log("pozvana");
-
-    if (cartArticles.length == 0) {
-        addToCart(articleId);
-        document.getElementById("article-submit-btn").innerHTML = "REMOVE";
-        console.log(cartArticles[0]);
-    } else {
-        for (let i = 0; i < cartArticles.length; i++) {
-
-            if (cartArticles[i].get_id() == articleId) {
-
-                removeFromCart(articleId);
-                document.getElementById("article-submit-btn").innerHTML = '<img src="img/icon/cart1.png "><span>Add to cart</span>';
-
-            } else {
-                addToCart(articleId);
-
-                console.log(cartArticles.length);
-                document.getElementById("article-submit-btn").innerHTML = "REMOVE";
-
-            }
-        }
-
-    }
-}
-
-function addToCart(articleId) {
-    let article = getArticleById(articleId);
-    cartArticles.push(article);
-}
-
-function removeFromCart(articleId) {
-
-    for (let i = 0; i < cartArticles.length; i++) {
-        if (cartArticles[i].get_id() == articleId) {
-            cartArticles.splice(i, 1);
-        }
-    }
-}
-
-function articlePreview(articleId) {
+function articlePreview(articleId) { // dynamically insert elements with specific article data
 
     let article = getArticleById(parseInt(articleId));
     let infoContainer = document.getElementById("info-container");
@@ -413,7 +426,7 @@ function articlePreview(articleId) {
     // article price
     let price = document.createElement("H3");
     price.setAttribute("id", "article-price");
-    price.innerHTML = article.get_price() + "€";
+    price.innerHTML = article.get_price() + CURRENCY_EURO;
     infoContainer.appendChild(price);
 
     // article details
@@ -427,8 +440,6 @@ function articlePreview(articleId) {
     cartForm.setAttribute("class", "article-cart-form");
     cartForm.setAttribute("id", "cart-form");
     infoContainer.appendChild(cartForm);
-
-
 
     // quantity label
     let quantityLabel = document.createElement("label");
@@ -472,10 +483,10 @@ function articlePreview(articleId) {
 
 }
 
-function cartPreview() {
+function cartPreview() { // dynamically display articles from cart list
 
     for (let i = 0; i < cartArticles.length; i++) {
-
+        // article-card
         let article = document.createElement("DIV");
         article.setAttribute("class", "card-article-card");
         article.innerHTML = "<div id='card-article-image-container'>" +
@@ -484,22 +495,24 @@ function cartPreview() {
             "<h5 id='article-card-name'>" + cartArticles[i].get_name() + "</h5>" +
             "<div class='row'>" +
             "<p id='article-card-amount'>1<span>x</span></p>" +
-            "<p id='article-card-price'>" + cartArticles[i].get_price() + "&#8364;</p> </div></div>";
+            "<p id='article-card-price'>" + cartArticles[i].get_price() + CURRENCY_EURO + "</p> </div></div>";
         document.getElementById("cart-article-cards").appendChild(article);
 
     }
+
+    // checkout total amount
     let totalAmount = 0;
     for (let j = 0; j < cartArticles.length; j++) {
         totalAmount += cartArticles[j].get_price();
     }
+    // label
     let totalPriceLabel = document.createElement("P");
     totalPriceLabel.innerHTML = "TOTAL: ";
     document.getElementById("checkout-cart").appendChild(totalPriceLabel);
 
+    // total price value
     let totalPrice = document.createElement("P");
     totalPrice.setAttribute("id", "total-price");
-    totalPrice.innerHTML = totalAmount + "&#8364;";
+    totalPrice.innerHTML = totalAmount + CURRENCY_EURO;
     document.getElementById("checkout-cart").appendChild(totalPrice);
-
-
 }
